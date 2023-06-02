@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %} Login Page {% endblock %}
+
+{% block content %}
+{%for item in values %}
+<h1>[ {{item.email}} ]</h1>
+<p>zFirst Name {{item.first_name}}</p>
+<p>Last Name {{item.last_name}}</p>
+<p>Email {{item.email}}</p>
+<p>Password Hash {{item.password_hash}}</p>
+<p>Dob {{item.dob}}</p>
+<p>Address {{item.address}}</p>
+<p>Phone {{item.phone_number}}</p>
+<h1>-----------------</h1>
+{% endfor %}
+{% endblock %}

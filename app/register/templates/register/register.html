@@ -1,0 +1,53 @@
+{% extends  "base.html" %}
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+<section >
+  <ul class="circles">
+  {% for x in range(10) %}
+    <li></li>
+    {% endfor %}
+  </ul>
+    <div class="container py-5">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration blurred-box" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form </h3>
+             
+              <form class="form-register" method="post" >
+                {{ form.hidden_tag() }}
+                {{ form.first_name.label }}
+                {{ form.first_name(class="form-control",placeholder="First Name")}}
+                {{ form.last_name.label }}
+                {{ form.last_name(class="form-control",placeholder="Last Name")}}
+                {{ form.email.label }}
+                {{ form.email(class="form-control",placeholder="Email")}}
+                {{ form.password.label }}
+                {{ form.password(class="form-control",placeholder="password",)}}
+                {{ form.confirmed_password.label }}
+                {{ form.confirmed_password(class="form-control",placeholder="Comfirm Password",)}}
+                {{ form.dob.label }}
+                {{form.dob(class='form-control datepicker')}} {{form.hidden_tag()}}
+                {{ form.phone_no.label }}
+                {{ form.phone_no(class="form-control",placeholder='Phone Number')}}
+                {{ form.address.label }}
+                {{ form.address(class="form-control",placeholder='Address')}}
+                <div class="checkbox mb-3">
+                  <h6>Already have an account?</h6>
+                  <a class="btn btn-sm btn-secondary" href="{{ url_for('app.Login') }}">Login</a>
+               </div>
+   
+                {{ form.submit_field(class="btn btn-lg btn-block btn-primary") }}
+  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+    

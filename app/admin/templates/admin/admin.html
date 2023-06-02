@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}
+Employee Details
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-md navbar-dark blurred-box">
+    <a class="navbar-brand" href="#">Admin dashboard</a>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link colorwhite" href="{{ url_for('<admin>.Admin')}}">Home</a>
+      </li>
+      
+    </ul>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link colorwhite">Welcome, {{ current_user.first_name }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link colorwhite" href="{{ url_for('logout_page') }}">Logout</a>
+    </li>
+    </ul>
+  </nav>
+<div class="container">
+    <br>
+ <form class="form-register row" method="post" >
+                {{ form.hidden_tag() }}
+                 <div class="col-8">
+                {{ form.search(class="form-control",placeholder="Name & Address")}}
+                 </div>
+     <div class="col-4">
+                {{ form.submit_field(class="btn btn-lg btn-block btn-primary") }}
+     </div>
+
+ </form>
+</div>
+<div class="margin5 ">
+    <div class=" blurred-box">
+<table class="table colorwhite ">
+    <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">DOB</th>
+            <th scope="col">Phone Number</th>
+          <th scope="col">Address</th>
+            <th scope="col">Option</th>
+        </tr>
+      </thead>
+    <tbody>
+        {%for employee in values %}
+        {% if employee.first_name!='admin'%}
+      <tr>
+        <td> {{employee['first_name']}}</td>
+        <td> {{employee['last_name']}}</td>
+        <td> {{employee['email']}}</td>
+          <td> {{employee['dob']}}</td>
+          <td> {{employee['phone_number']}}</td>
+          <td> {{employee['address']}}</td>
+        <td>
+            <button class="btn btn-outline btn-success"><a style="text-decoration: none;"  href=detail/{{employee.email}}><span class="colorwhite">More Detail</span></a></button>
+            <button type="button" class="btn btn-danger"><a  style="text-decoration: none;" href=delete/{{employee.email}}><span class="colorwhite">Delete</span></a></button>
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+    </div>
+  </div>
+{% endblock %}
